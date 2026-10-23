@@ -1,4 +1,4 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#F3F4F6" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#0E0F11" media="(prefers-color-scheme: dark)"><meta name="description" content="MBTI와 예산·시간으로 나에게 맞는 버킷리스트를 추천받고 하나씩 달성해요."><meta property="og:title" content="버킷스탬프"><meta property="og:description" content="나에게 맞는 버킷리스트를 찾고 하나씩 달성해요."><title>버킷스탬프</title><style>:root{padding-top:env(safe-area-inset-top,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style><style>
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#F3F4F6" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#0E0F11" media="(prefers-color-scheme: dark)"><meta name="description" content="MBTI와 예산·시간으로 맞춤 버킷리스트를 추천받고, 사진으로 인증하며 하나씩 달성해요."><link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="192x192" href="icon-192.png"><link rel="apple-touch-icon" href="apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="버킷스탬프"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta property="og:type" content="website"><meta property="og:site_name" content="버킷스탬프"><meta property="og:url" content="https://unmakers.github.io/bucketstamp/"><meta property="og:title" content="버킷스탬프 · 하고 싶은 일을, 해낸 일로"><meta property="og:description" content="MBTI와 예산·시간으로 맞춤 버킷리스트를 추천받고, 사진으로 인증하며 하나씩 달성해요."><meta property="og:image" content="https://unmakers.github.io/bucketstamp/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:locale" content="ko_KR"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://unmakers.github.io/bucketstamp/og.png"><title>버킷스탬프</title><style>:root{padding-top:env(safe-area-inset-top,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style><style>
 /* Layout: one app column (max 640px), large page titles, cards on a cool grey ground, fixed bottom tab bar. One accent (signal orange) reserved for actions and achievements. */
 :root{
   --bg:#F3F4F6; --surface:#FFFFFF; --fill:#F0F1F4; --fill-2:#E6E8EC; --line:#E3E5E9; --line-strong:#C9CDD4;
@@ -402,6 +402,25 @@ select.input{appearance:none;-webkit-appearance:none;background-image:url("data:
 .ph.dthumb .minisea{position:absolute;right:-8px;bottom:-8px;width:36px;height:36px;font-size:10px;background:var(--surface);border-width:2px}
 @media (max-width:420px){.planrow{grid-template-columns:28px minmax(0,1fr)}.planrow .input,.planrow em{grid-column:2;text-align:left}}
 
+.iconbtn.sm{width:36px;height:36px;border-radius:10px}
+.iconbtn.sm svg{width:18px;height:18px}
+.iconbtn[disabled]{opacity:.3;cursor:not-allowed}
+.iconbtn.danger{color:var(--bad)}
+.editlist{display:flex;flex-direction:column;gap:8px}
+.erow{display:grid;grid-template-columns:28px minmax(0,1fr) auto;gap:8px;align-items:center}
+.erow .pn{width:28px;height:28px;border-radius:50%;background:var(--fill);display:grid;place-items:center;font-size:13px;font-weight:700;color:var(--text-2)}
+.erow.done .pn{background:var(--accent);color:var(--on-accent)}
+.erow .input{height:46px;font-size:15px}
+.eacts{display:flex;align-items:center;gap:2px}
+.edone{font-size:13px;font-weight:700;color:var(--ok);width:36px;text-align:center}
+.callist{display:flex;flex-direction:column;background:var(--fill);border-radius:16px;overflow:hidden}
+.calrow{display:flex;align-items:center;gap:12px;padding:14px 16px;color:inherit;text-decoration:none}
+.calrow+.calrow{border-top:1px solid var(--line)}
+.calrow:hover{background:var(--fill-2)}
+.calrow .cd{font-size:14px;font-weight:700;color:var(--accent-ink);width:64px;flex:0 0 auto}
+.calrow .ct{flex:1;min-width:0;font-size:15px;font-weight:600}
+.calrow svg{color:var(--text-3)}
+label.btn{cursor:pointer}
 /* tabbar */
 .tabbar{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--surface);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px);padding-left:max(8px,env(safe-area-inset-left,0px));padding-right:max(8px,env(safe-area-inset-right,0px))}
 .tabbar .in{max-width:640px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);height:72px}
@@ -411,8 +430,9 @@ select.input{appearance:none;-webkit-appearance:none;background-image:url("data:
 .tab .bd{position:absolute;top:10px;left:calc(50% + 8px);min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--accent);color:var(--on-accent);font-size:11px;font-weight:800;display:grid;place-items:center;font-variant-numeric:tabular-nums}
 
 /* sheet */
-.scrim{position:fixed;inset:0;z-index:40;background:var(--scrim);display:flex;align-items:flex-end;justify-content:center;animation:fade .2s}
-.sheet{width:100%;max-width:640px;max-height:92vh;overflow-y:auto;background:var(--surface);border-radius:28px 28px 0 0;padding:12px max(20px,env(safe-area-inset-right,0px)) calc(24px + env(safe-area-inset-bottom,0px)) max(20px,env(safe-area-inset-left,0px));display:flex;flex-direction:column;gap:20px;animation:up .28s cubic-bezier(.2,.9,.3,1)}
+.scrim{position:fixed;inset:0;z-index:40;background:var(--scrim);display:flex;align-items:flex-end;justify-content:center}
+#layer.fresh .scrim{animation:fade .2s}#layer.fresh .sheet{animation:up .28s cubic-bezier(.2,.9,.3,1)}#layer.fresh .cele{animation:fade .25s}#layer.fresh .bigseal{animation:stamp .6s cubic-bezier(.2,1.5,.4,1) both}
+.sheet{width:100%;max-width:640px;max-height:92vh;overflow-y:auto;background:var(--surface);border-radius:28px 28px 0 0;padding:12px max(20px,env(safe-area-inset-right,0px)) calc(24px + env(safe-area-inset-bottom,0px)) max(20px,env(safe-area-inset-left,0px));display:flex;flex-direction:column;gap:20px}
 .sheet .grab{width:40px;height:5px;border-radius:9px;background:var(--fill-2);margin:0 auto}
 .sheet h2{font-size:22px;font-weight:800;letter-spacing:-.03em}
 .field{display:flex;flex-direction:column;gap:8px;min-width:0}
@@ -423,10 +443,10 @@ select.input{appearance:none;-webkit-appearance:none;background-image:url("data:
 @keyframes up{from{transform:translateY(40px);opacity:.4}}
 
 /* celebrate */
-.cele{position:fixed;inset:0;z-index:50;background:var(--scrim);display:grid;place-items:center;padding:24px;animation:fade .25s}
+.cele{position:fixed;inset:0;z-index:50;background:var(--scrim);display:grid;place-items:center;padding:24px}
 .cele canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none}
 .celecard{position:relative;width:100%;max-width:380px;background:var(--surface);border-radius:28px;padding:36px 24px 24px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;box-shadow:var(--shadow-lg)}
-.bigseal{width:148px;height:148px;border-radius:50%;border:5px solid var(--accent);color:var(--accent-ink);display:grid;place-items:center;position:relative;transform:rotate(-12deg);margin-bottom:14px;animation:stamp .6s cubic-bezier(.2,1.5,.4,1) both}
+.bigseal{width:148px;height:148px;border-radius:50%;border:5px solid var(--accent);color:var(--accent-ink);display:grid;place-items:center;position:relative;transform:rotate(-12deg);margin-bottom:14px}
 .bigseal::before{content:"";position:absolute;inset:7px;border-radius:50%;border:1.5px dashed var(--accent);opacity:.7}
 .bigseal div{display:flex;flex-direction:column;align-items:center;line-height:1.1}
 .bigseal b{font-size:38px;font-weight:900;letter-spacing:-.02em;color:var(--accent)}
@@ -487,7 +507,13 @@ const IC={
  image:'<rect x="3.5" y="4.5" width="17" height="15" rx="2.5"/><circle cx="9" cy="9.5" r="1.7"/><path d="M20.5 15.5l-5-5-9 9"/>',
  download:'<path d="M12 4v11M7 10.5l5 5 5-5M5 20h14"/>',
  share:'<path d="M12 15V4M7.5 8.5 12 4l4.5 4.5M5 13v6.5h14V13"/>',
- warn:'<path d="M12 4.2 2.8 19.8h18.4z"/><path d="M12 10v4.5M12 17.2v.3"/>'
+ warn:'<path d="M12 4.2 2.8 19.8h18.4z"/><path d="M12 10v4.5M12 17.2v.3"/>',
+ pin:'<path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/>',
+ edit:'<path d="M4 20h4L18.6 9.4a2 2 0 0 0 0-2.8l-1.2-1.2a2 2 0 0 0-2.8 0L4 16z"/>',
+ up:'<path d="M6 15l6-6 6 6"/>',
+ trash:'<path d="M4.5 7h15M10 11v6M14 11v6M6 7l1 12.5a1.5 1.5 0 0 0 1.5 1.5h7a1.5 1.5 0 0 0 1.5-1.5L18 7M9 7V4.5h6V7"/>',
+ upload:'<path d="M12 15V4M7 8.5l5-4.5 5 4.5M5 20h14"/>',
+ phone:'<rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M11 18.5h2"/>'
 };
 const ic=(n,c="")=>`<svg class="i ${c}" viewBox="0 0 24 24" aria-hidden="true">${IC[n]||""}</svg>`;
 
@@ -534,8 +560,63 @@ const CATALOG=[
  {id:"milkyway",t:"은하수 사진 한 장 남기기",cat:"create",cost:40,h:20,a:.3,o:1,s:.3,n:.7,c:.9,m:.4,p:.5,st:["삼각대와 광각 렌즈 준비","달과 날씨 맞는 날 고르기","빛 공해 없는 곳으로 가기","은하수 사진 찍기"]},
  {id:"zine",t:"독립출판으로 책 한 권 내기",cat:"create",cost:90,h:160,a:0,o:0,s:.2,n:.6,c:1,m:.7,p:.9,st:["주제와 목차 정하기","원고 완성하기","편집과 디자인","인쇄해서 독립서점에 입고"]},
  {id:"web-novel",t:"웹소설 한 작품 완결 내기",cat:"create",cost:0,h:300,a:0,o:0,s:.1,n:.6,c:1,m:.5,p:1,st:["줄거리와 인물 설정","10화 미리 써두기","연재 시작하기","완결까지 쓰기"]},
- {id:"indie-game",t:"인디게임 하나 만들어 출시",cat:"create",cost:30,h:400,a:0,o:0,s:.3,n:.7,c:1,m:.5,p:1,st:["한 줄 기획 정하기","플레이 가능한 시제품 만들기","완성 빌드와 테스트","스토어에 출시"]}
+ {id:"indie-game",t:"인디게임 하나 만들어 출시",cat:"create",cost:30,h:400,a:0,o:0,s:.3,n:.7,c:1,m:.5,p:1,st:["한 줄 기획 정하기","플레이 가능한 시제품 만들기","완성 빌드와 테스트","스토어에 출시"]},
+ {id:"jeju-oreum",t:"제주 오름 열 곳 오르기",cat:"travel",cost:120,h:40,a:.7,o:1,s:.4,n:.5,c:.3,m:.4,p:.7,loc:["jeju"],st:["오를 오름 열 곳 고르기","세 곳 오르기","일곱 곳 오르기","열 곳 채우고 정상에서 사진 남기기"]},
+ {id:"seorak",t:"설악산 대청봉 오르기",cat:"sport",cost:30,h:14,a:.9,o:1,s:.5,n:.5,c:.2,m:.4,p:.5,mo:[5,6,9,10],loc:["gangwon"],st:["오색 코스로 일정 잡기","동네 산 두 번으로 체력 점검","대청봉 정상 찍기"]},
+ {id:"haeparang",t:"해파랑길 한 구간 완주",cat:"sport",cost:40,h:45,a:.9,o:1,s:.4,n:.6,c:.3,m:.5,p:.8,mo:[4,5,6,9,10,11],loc:["gangwon","gyeongsang"],st:["걸을 구간과 일정 정하기","첫날 20km 걷기","남은 코스 이어 걷기","구간 완주 인증 받기"]},
+ {id:"new-year-sunrise",t:"동해에서 새해 첫 일출 보기",cat:"culture",cost:25,h:14,a:.3,o:1,s:.7,n:.5,c:.2,m:.8,p:.4,mo:[12,1],loc:["gangwon"],st:["기차표와 숙소 미리 잡기","12월 31일 동해로 출발","새해 첫 해 보면서 소원 빌기"]},
+ {id:"ulleungdo",t:"울릉도와 독도 가보기",cat:"travel",cost:90,h:40,a:.6,o:1,s:.6,n:.8,c:.3,m:.6,p:.5,mo:[5,6,7,8,9],loc:["gyeongsang"],st:["배편과 숙소 예약","울릉도 해안길 돌아보기","독도 땅 밟기"]},
+ {id:"jinhae-blossom",t:"진해 군항제 벚꽃 보기",cat:"culture",cost:20,h:10,a:.4,o:.9,s:.7,n:.4,c:.3,m:.4,p:.3,mo:[3,4],loc:["gyeongsang"],st:["개화 시기 확인하기","교통편 예약","여좌천 벚꽃길 걷기"]},
+ {id:"rail-trip",t:"기차로 전국 다섯 도시 여행",cat:"travel",cost:70,h:50,a:.4,o:.7,s:.5,n:.7,c:.4,m:.4,p:.5,st:["철도 패스나 기차표 마련","다섯 도시 코스 짜기","도시마다 대표 음식 먹기","도시별 사진 한 장씩 남기기"]},
+ {id:"car-camping",t:"차박하며 별 보기",cat:"travel",cost:30,h:20,a:.4,o:1,s:.5,n:.6,c:.4,m:.4,p:.4,mo:[4,5,6,9,10],st:["차박 장비 챙기기","별 잘 보이는 곳 찾기","차에서 하룻밤 보내기"]},
+ {id:"kyoto-autumn",t:"교토 단풍 여행",cat:"culture",cost:140,h:35,a:.4,o:.7,s:.6,n:.6,c:.3,m:.6,p:.4,mo:[11],st:["단풍 절정 시기 확인","항공권과 숙소 예약","단풍 명소 세 곳 걷기"]},
+ {id:"hokkaido-snow",t:"홋카이도 설경 여행",cat:"travel",cost:180,h:40,a:.4,o:.9,s:.6,n:.8,c:.3,m:.5,p:.4,mo:[12,1,2],st:["여행 일정 정하기","항공권과 숙소 예약","눈 덮인 풍경 속 온천 즐기기"]},
+ {id:"angkor",t:"앙코르와트에서 일출 보기",cat:"travel",cost:120,h:40,a:.5,o:.9,s:.5,n:.9,c:.3,m:.7,p:.4,mo:[11,12,1,2],st:["항공권과 숙소 예약","유적 통합권 사기","새벽에 앙코르와트 일출 보기"]},
+ {id:"swiss-hike",t:"스위스 알프스 하이킹",cat:"travel",cost:600,h:120,a:.8,o:1,s:.5,n:.9,c:.3,m:.6,p:.7,mo:[6,7,8,9],st:["하이킹 코스 정하기","항공권과 패스 예약","산장에서 하룻밤","알프스 능선 끝까지 걷기"]},
+ {id:"safari",t:"아프리카 사파리",cat:"travel",cost:700,h:100,a:.5,o:1,s:.6,n:1,c:.3,m:.7,p:.6,mo:[7,8,9,10],st:["사파리 지역과 투어 고르기","예방접종과 비자 준비","게임 드라이브 떠나기","야생에서 빅5 찾기"]},
+ {id:"pullup",t:"턱걸이 10개 하기",cat:"sport",cost:10,h:80,a:1,o:.1,s:.2,n:.4,c:.2,m:.3,p:.9,st:["철봉에 30초 매달리기","턱걸이 1개 성공","5개 성공","10개 연속 성공"]},
+ {id:"climbing",t:"실내 클라이밍 V3 완등",cat:"sport",cost:40,h:60,a:.9,o:.1,s:.6,n:.7,c:.2,m:.3,p:.7,st:["클라이밍장 등록","V1 완등","V2 완등","V3 완등"]},
+ {id:"ski",t:"스키나 보드로 중급 코스 내려오기",cat:"sport",cost:80,h:30,a:.9,o:1,s:.7,n:.7,c:.1,m:.2,p:.5,mo:[12,1,2],loc:["gangwon"],st:["입문 강습 듣기","초급 코스 혼자 내려오기","중급 코스 끝까지 내려오기"]},
+ {id:"swim-1km",t:"수영 1km 쉬지 않고 가기",cat:"sport",cost:40,h:70,a:1,o:.2,s:.3,n:.4,c:.2,m:.3,p:.9,st:["수영 강습 등록","자유형 50m","500m 쉬지 않고","1km 완영"]},
+ {id:"run-10k",t:"10km 마라톤 대회 완주",cat:"sport",cost:15,h:40,a:1,o:.8,s:.6,n:.5,c:.2,m:.3,p:.7,mo:[3,4,5,9,10,11],st:["대회 신청하기","5km 쉬지 않고 달리기","8km 훈련","10km 완주"]},
+ {id:"golf-100",t:"골프 100타 깨기",cat:"sport",cost:300,h:150,a:.6,o:.8,s:.8,n:.5,c:.2,m:.2,p:.9,st:["레슨 등록","첫 필드 나가기","110타 깨기","100타 깨기"]},
+ {id:"yoga-30",t:"30일 연속 요가",cat:"sport",cost:5,h:15,a:.5,o:0,s:.1,n:.4,c:.2,m:.5,p:1,st:["매트 마련하고 시간 정하기","7일 연속","15일 연속","30일 채우기"]},
+ {id:"kayak",t:"카약으로 강 따라 내려가기",cat:"sport",cost:20,h:6,a:.8,o:1,s:.6,n:.9,c:.1,m:.3,p:.3,mo:[5,6,7,8,9],st:["카약 체험 예약","기초 노 젓기 배우기","강 코스 완주"]},
+ {id:"barista",t:"바리스타 자격증 따기",cat:"learn",cost:60,h:60,a:.3,o:0,s:.4,n:.5,c:.5,m:.3,p:.8,st:["학원이나 과정 등록","필기 합격","실기 연습","실기 합격"]},
+ {id:"first-aid",t:"심폐소생술 교육 수료",cat:"learn",cost:0,h:4,a:.4,o:0,s:.6,n:.5,c:.2,m:1,p:.3,st:["교육 일정 찾아 신청","교육 듣고 실습하기","수료증 받기"]},
+ {id:"sign-language",t:"수어로 자기소개 하기",cat:"learn",cost:20,h:40,a:.2,o:0,s:.6,n:.7,c:.3,m:.9,p:.7,st:["기초 강좌 등록","지문자 익히기","인사와 자기소개 문장 익히기","수어로 자기소개 영상 찍기"]},
+ {id:"history-cert",t:"한국사능력검정 1급 따기",cat:"learn",cost:5,h:100,a:0,o:0,s:.2,n:.3,c:.3,m:.5,p:1,st:["시험 날짜 정하고 접수","교재 한 번 끝내기","기출 다섯 회분 풀기","1급 합격"]},
+ {id:"speech",t:"사람들 앞에서 10분 발표하기",cat:"learn",cost:0,h:20,a:.2,o:.1,s:.8,n:.8,c:.5,m:.5,p:.6,st:["발표할 주제 정하기","발표 자료 만들기","세 번 리허설","무대에서 발표하기"]},
+ {id:"my-app",t:"내 앱 하나 만들어 배포하기",cat:"create",cost:10,h:150,a:0,o:0,s:.2,n:.7,c:1,m:.5,p:.9,st:["만들 앱 한 줄로 정하기","첫 화면 만들기","핵심 기능 완성","배포하고 링크 공유"]},
+ {id:"drawing-100",t:"드로잉 100장 그리기",cat:"create",cost:15,h:100,a:0,o:.2,s:.1,n:.5,c:1,m:.4,p:.9,st:["스케치북과 펜 마련","25장","50장","100장 채우기"]},
+ {id:"film-camera",t:"필름카메라로 한 롤 찍어 인화하기",cat:"create",cost:15,h:10,a:.3,o:.6,s:.4,n:.6,c:1,m:.5,p:.4,st:["필름카메라와 필름 구하기","36컷 다 찍기","현상하고 인화하기"]},
+ {id:"vlog",t:"브이로그 열 편 올리기",cat:"create",cost:0,h:40,a:.3,o:.5,s:.4,n:.6,c:1,m:.3,p:.8,st:["채널 만들기","첫 영상 편집해서 올리기","다섯 편","열 편 채우기"]},
+ {id:"own-song",t:"자작곡 한 곡 만들기",cat:"create",cost:20,h:60,a:.1,o:0,s:.2,n:.8,c:1,m:.6,p:.7,st:["멜로디 떠올려 녹음하기","가사 쓰기","편곡하기","완성곡 녹음해서 남기기"]},
+ {id:"woodwork",t:"원목 가구 하나 직접 만들기",cat:"create",cost:60,h:30,a:.5,o:.1,s:.4,n:.7,c:1,m:.5,p:.6,st:["목공방 등록","만들 가구 정하고 도면 그리기","재단과 조립","마감 칠하고 집에 들이기"]},
+ {id:"photo-exhibit",t:"작은 사진전 열기",cat:"create",cost:100,h:80,a:.3,o:.4,s:.7,n:.8,c:1,m:.6,p:.8,st:["전시할 사진 스무 장 고르기","전시 공간 구하기","인화와 액자 준비","전시 열고 사람들 초대"]},
+ {id:"knit-gift",t:"목도리 떠서 선물하기",cat:"people",cost:5,h:25,a:.1,o:0,s:.5,n:.6,c:.9,m:.9,p:.7,st:["실과 바늘 고르기","기본 뜨기 익히기","목도리 완성","포장해서 선물하기"]},
+ {id:"parent-interview",t:"부모님 인생 인터뷰 영상 남기기",cat:"people",cost:0,h:15,a:.1,o:.1,s:.8,n:.5,c:.8,m:1,p:.5,st:["여쭤볼 질문 스무 개 적기","인터뷰 날 잡기","촬영하기","편집해서 가족과 나눠 보기"]},
+ {id:"reunion",t:"연락 끊긴 친구 다시 만나기",cat:"people",cost:5,h:4,a:.2,o:.3,s:1,n:.4,c:.1,m:1,p:.3,st:["보고 싶은 친구 떠올리기","먼저 연락하기","만나서 밥 먹기"]},
+ {id:"shelter",t:"유기동물 보호소 봉사",cat:"people",cost:0,h:20,a:.6,o:.5,s:.6,n:.5,c:.1,m:1,p:.6,st:["봉사 가능한 보호소 찾기","첫 봉사 다녀오기","다섯 번 채우기"]},
+ {id:"sponsor",t:"1년 동안 정기 후원하기",cat:"people",cost:24,h:2,a:0,o:0,s:.3,n:.3,c:.1,m:1,p:.9,st:["후원할 곳 고르기","정기 후원 시작","1년 채우기"]},
+ {id:"surprise-party",t:"소중한 사람 깜짝 파티 열어주기",cat:"people",cost:30,h:10,a:.3,o:.3,s:1,n:.6,c:.5,m:.9,p:.5,st:["주인공과 날짜 정하기","몰래 사람들 모으기","장소와 케이크 준비","깜짝 파티 성공"]},
+ {id:"museums",t:"국립박물관 열 곳 가보기",cat:"culture",cost:10,h:40,a:.3,o:.3,s:.4,n:.5,c:.3,m:.6,p:.8,st:["가볼 박물관 열 곳 정하기","세 곳","일곱 곳","열 곳 채우기"]},
+ {id:"musical",t:"뮤지컬 앞자리에서 보기",cat:"culture",cost:20,h:4,a:.1,o:.2,s:.6,n:.6,c:.1,m:.4,p:.3,st:["보고 싶은 작품 고르기","티켓 오픈 날 예매","공연 보고 소감 남기기"]},
+ {id:"digital-detox",t:"휴대폰 없이 48시간 보내기",cat:"culture",cost:0,h:48,a:.4,o:.5,s:.3,n:.8,c:.2,m:.7,p:.6,st:["날짜 정하고 주변에 알리기","하고 싶은 일 목록 적기","48시간 휴대폰 꺼두기"]},
+ {id:"bookstores",t:"전국 독립서점 열 곳 탐방",cat:"culture",cost:20,h:40,a:.4,o:.6,s:.3,n:.6,c:.3,m:.5,p:.7,st:["가볼 서점 열 곳 정하기","서점마다 책 한 권 사기","열 곳 채우기"]},
+ {id:"hanok-stay",t:"한옥에서 하룻밤 보내기",cat:"culture",cost:25,h:20,a:.2,o:.5,s:.6,n:.6,c:.1,m:.6,p:.3,st:["머물 한옥 고르기","예약하기","마루에서 차 마시며 쉬기"]},
+ {id:"cooking-class",t:"나라별 요리 다섯 가지 만들기",cat:"culture",cost:30,h:25,a:.3,o:0,s:.5,n:.7,c:.7,m:.4,p:.6,st:["만들 요리 다섯 가지 정하기","재료 장보기","세 가지 성공","다섯 가지 완성"]}
 ];
+const SEASON={"jeju-olle":[3,4,5,9,10,11],"jiri-jongju":[5,6,9,10],"half-marathon":[3,4,10,11],"full-marathon":[3,4,10,11],"triathlon":[6,7,8,9],"bike-cross":[4,5,6,9,10],"scuba":[6,7,8,9,10],"surfing":[6,7,8,9],"paraglide":[4,5,9,10],"aurora":[9,10,11,12,1,2,3],"santiago":[4,5,6,9,10],"himalaya":[3,4,10,11],"mongolia":[6,7,8,9],"camping":[5,6,9,10],"festival":[6,7,8],"milkyway":[4,5,6,7,8,9],"garden":[3,4,5,6,7,8,9,10]};
+const LOC={"jeju-olle":["jeju"],"hallasan":["jeju"],"jiri-jongju":["jeolla","gyeongsang"],"surfing":["gangwon"],"paraglide":["chungcheong"],"camping":["seoul","jeju"]};
+CATALOG.forEach(c=>{if(SEASON[c.id])c.mo=SEASON[c.id];if(LOC[c.id])c.loc=LOC[c.id]});
+const REGION={seoul:"수도권",gangwon:"강원",chungcheong:"충청",jeolla:"전라",gyeongsang:"경상",jeju:"제주"};
+function moLabel(mo){const S=new Set(mo);if(S.size>=12)return"사계절";let start=1;for(let m=1;m<=12;m++){if(S.has(m)&&!S.has(m===1?12:m-1)){start=m;break}}
+  const r=[];let cur=null;for(let k=0;k<12;k++){const m=((start-1+k)%12)+1;if(S.has(m)){if(!cur)cur=[m,m];else cur[1]=m}else if(cur){r.push(cur);cur=null}}if(cur)r.push(cur);
+  return r.map(([a,b])=>a===b?`${a}월`:`${a}~${b}월`).join(", ")}
+function seasonInfo(it,p){if(!it.mo||!it.mo.length)return null;const cur=new Date().getMonth()+1,win=new Set();for(let k=0;k<Math.max(1,p.months);k++)win.add(((cur-1+k)%12)+1);
+  return{now:it.mo.includes(cur),ok:it.mo.some(m=>win.has(m)),label:moLabel(it.mo)}}
+const isNear=(it,p)=>!!(p.region&&it.loc&&it.loc.includes(p.region));
 const QS=[
  {k:"a",t:"쉬는 날,\n더 끌리는 쪽은?",o:[["차분하게 보내기","책, 음악, 만들기처럼 조용한 활동"],["그때그때 달라요","기분 따라 반반"],["몸 움직이기","걷고 뛰고 땀 흘리는 활동"]]},
  {k:"o",t:"마음이 편한 곳은\n어디인가요?",o:[["실내","카페, 집, 공방, 전시장"],["상관없어요","어디든 괜찮아요"],["야외와 자연","산, 바다, 길 위"]]},
@@ -574,7 +655,7 @@ const ago=t=>{const s=(Date.now()-t)/1000;if(s<60)return"방금";if(s<3600)retur
 const BLANK="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==";
 const clone=o=>JSON.parse(JSON.stringify(o));
 
-function defaultProfile(){return{mbti:{EI:"",SN:"",TF:"",JP:""},q:{a:null,o:null,s:null,n:null,c:null},cats:[],budget:300,months:12,weekly:5,done:false}}
+function defaultProfile(){return{mbti:{EI:"",SN:"",TF:"",JP:""},q:{a:null,o:null,s:null,n:null,c:null},cats:[],region:"",budget:300,months:12,weekly:5,done:false}}
 function normProfile(p){const d=defaultProfile();p=p||{};return{...d,...p,mbti:{...d.mbti,...(p.mbti||{})},q:{...d.q,...(p.q||{})},cats:Array.isArray(p.cats)?p.cats:[]}}
 function loadLocal(){try{return JSON.parse(localStorage.getItem(LS))||{}}catch(e){return{}}}
 function saveLocal(){try{localStorage.setItem(LS,JSON.stringify({profile:st.profile,items:st.items,ai:st.ai}))}catch(e){}}
@@ -643,6 +724,8 @@ function computeRecs(){
     if(p.cats.includes(it.cat))s+=.12;
     if(it.cost>rb)s-=.35;else if(it.cost>rb*.6)s-=.1;
     if(it.h>rh)s-=.3;else if(it.h>rh*.6)s-=.08;
+    const se=seasonInfo(it,p);if(se){if(!se.ok)s-=.3;else if(se.now)s+=.04}
+    if(isNear(it,p))s+=.06;
     return{...it,key:it.id,score:s,why:reasonFor(it,u)};
   }).sort((a,b)=>b.score-a.score);
 }
@@ -699,7 +782,9 @@ function render(){
   document.getElementById("tabs").innerHTML=TABS.map(([k,l,i])=>{
     let bd="";if(k==="recs"&&st.picked.size)bd=`<span class="bd">${st.picked.size}</span>`;
     return`<button class="tab" data-act="tab" data-tab="${k}" ${st.tab===k?'aria-current="page"':""}>${ic(i)}${l}${bd}</button>`}).join("");
-  document.getElementById("layer").innerHTML=st.celebrate?celebrateView():st.sheet?sheetView():"";
+  const lk=st.celebrate?"c"+st.celebrate:st.sheet?st.sheet+((st.arg&&st.arg.id)||""):"",layer=document.getElementById("layer");
+  layer.classList.toggle("fresh",lk!==st.lastLayer);st.lastLayer=lk;
+  layer.innerHTML=st.celebrate?celebrateView():st.sheet?sheetView():"";
   document.body.style.overflow=st.sheet||st.celebrate?"hidden":"";
   restoreKeep();
   paintRanges();
@@ -714,7 +799,7 @@ function titlebar(t,sub,right=""){return`<div><div class="titlebar"><h1 class="t
 function paintRanges(){document.querySelectorAll("input[type=range]").forEach(r=>{const p=(r.value-r.min)/(r.max-r.min)*100;r.style.setProperty("--p",p+"%")})}
 
 /* ---------------- 성향 (wizard) ---------------- */
-const WZ=["intro","mbti","q0","q1","q2","q3","q4","cats","budget","time","result"];
+const WZ=["intro","mbti","q0","q1","q2","q3","q4","cats","region","budget","time","result"];
 function viewProfile(){
   const step=WZ[st.wiz]||"result",d=st.draft;
   if(step==="result")return viewPersona();
@@ -752,6 +837,10 @@ function viewProfile(){
     body=`<div><h1 class="wq">끌리는 분야를<br>골라주세요</h1><p class="wsub">여러 개 골라도 되고, 건너뛰어도 돼요.</p></div>
       <div class="catgrid">${Object.entries(CAT).map(([k,l])=>`<button data-act="cat" data-k="${k}" aria-pressed="${d.cats.includes(k)}"><span class="caticon sm">${ic(k)}</span>${l}</button>`).join("")}</div>`;
     nextLabel=d.cats.length?"다음":"건너뛰기";
+  }else if(step==="region"){
+    body=`<div><h1 class="wq">어디에 살고 계세요?</h1><p class="wsub">가까운 곳에서 할 수 있는 목표를 조금 더 앞에 보여드려요.</p></div>
+      <div class="catgrid">${Object.entries(REGION).map(([k,l])=>`<button data-act="region" data-k="${k}" aria-pressed="${d.region===k}"><span class="caticon sm">${ic("pin")}</span>${l}</button>`).join("")}</div>`;
+    nextLabel=d.region?"다음":"건너뛰기";
   }else if(step==="budget"){
     body=`<div><h1 class="wq">버킷리스트에 쓸 수 있는<br>돈은 얼마인가요?</h1><p class="wsub">이번 기간 동안 버킷리스트에만 쓸 총액이에요.</p></div>
       <div class="card">
@@ -781,27 +870,30 @@ function viewPersona(){
     <div class="who"><div class="typebadge">${esc(hasMbti(p.mbti)?mbtiStr(p.mbti):"MBTI")}</div>
       <div><p class="faint small" style="font-weight:600">나는</p><h2>${esc(persona(p))}</h2></div></div>
     <div class="traits">${TRAITS.map(([k,l,r])=>{const x=v[k];return`<div class="trait ${x>.58?"hi":x<.42?"lo":""}"><span>${l}</span><div class="tl"><i style="left:${Math.round(x*100)}%"></i></div><span>${r}</span></div>`}).join("")}</div>
-    ${p.cats.length?`<div class="row">${p.cats.map(c=>`<span class="pill">${CAT[c]}</span>`).join("")}</div>`:""}
+    ${p.cats.length||p.region?`<div class="row">${p.region?`<span class="pill accent">${REGION[p.region]} 거주</span>`:""}${p.cats.map(c=>`<span class="pill">${CAT[c]}</span>`).join("")}</div>`:""}
   </div>
-  <div class="sec"><div class="sechead"><h2>예산과 시간</h2><button class="btn text" data-act="wgo" data-v="8">수정</button></div>
+  <div class="sec"><div class="sechead"><h2>예산과 시간</h2><button class="btn text" data-act="wgo" data-v="${WZ.indexOf("budget")}">수정</button></div>
     <div class="resgrid"><div class="res"><span>총 예산</span><b>${won(p.budget)}</b></div><div class="res"><span>기간</span><b>${p.months}개월</b></div><div class="res"><span>쓸 수 있는 시간</span><b>${ah.toLocaleString("ko-KR")}시간</b></div></div>
   </div>
   <div class="stack">
     <button class="btn primary block" data-act="saveProfile">${fromWiz?"이 조건으로 추천 받기":"추천 보러 가기"}</button>
     <button class="btn text" data-act="wgo" data-v="1" style="align-self:center">성향 질문 다시 하기</button>
-  </div>`;
+  </div>
+  ${st.profile.done?dataSection():""}`;
 }
 
 /* ---------------- 추천 ---------------- */
 function recPool(){const m=new Map();st.ai.forEach(r=>m.set(r.key,r));computeRecs().forEach(r=>{if(!m.has(r.key))m.set(r.key,r)});return m}
 function recCard(r,ai){
-  const added=myKeys().has(r.key),on=st.picked.has(r.key),f=fitOf(r.cost,r.h);
+  const added=myKeys().has(r.key),on=st.picked.has(r.key),p=st.profile,se=seasonInfo(r,p),near=isNear(r,p);
+  let f=fitOf(r.cost,r.h);
+  if(f.cls!=="bad"){if(se&&!se.ok)f={cls:"bad",t:"기간 안에 제철 없음"};else if(se&&se.now)f={cls:"ok",t:"지금이 제철"};else if(near)f={cls:"ok",t:"가까워요"}}
   return`<button class="rec ${added?"added":""}" data-act="pick" data-id="${esc(r.key)}" aria-pressed="${on}" ${added?'aria-disabled="true"':""}>
     <div class="top"><span class="caticon sm">${ic(r.cat)}</span><span class="cat">${CAT[r.cat]||"기타"}</span>
       ${ai?`<span class="pill accent">${ic("spark","s")}AI 추천</span>`:added?`<span class="pill">담김</span>`:`<span class="match">${Math.round(clamp(r.score)*100)}% 맞음</span>`}</div>
     <h3>${esc(r.t)}</h3>
     <p class="why">${esc(r.why)}</p>
-    <div class="meta"><b>${won(r.cost)}</b><span class="dot"></span><b>${hrs(r.h)}</b><span class="dot"></span><span>${r.st.length}단계</span><span class="pill ${f.cls}" style="margin-left:auto">${f.t}</span></div>
+    <div class="meta"><b>${won(r.cost)}</b><span class="dot"></span><b>${hrs(r.h)}</b><span class="dot"></span><span>${r.st.length}단계</span>${se?`<span class="dot"></span><span>제철 ${se.label}</span>`:""}<span class="pill ${f.cls}" style="margin-left:auto">${f.t}</span></div>
     ${added?"":`<span class="ck" aria-hidden="true">${ic("check")}</span>`}
   </button>`;
 }
@@ -859,7 +951,8 @@ function viewList(){
   ${late.length?`<button class="alert" data-act="jump" data-id="${late[0].it.id}">${ic("warn")}<span><b>밀린 단계가 ${late.length}개 있어요</b><span>${esc(late[0].s.t)} · ${ddTxt(dday(late[0].s.due))}</span></span>${ic("right","s")}</button>`:""}
   ${!st.canWrite?`<div class="notice">${ic("info")}<span><b>보기 전용 링크예요.</b> 인증해도 저장되지 않아요.</span></div>`:""}
   ${active.length?`<div class="sec"><div class="sechead"><h2>진행 중</h2><span>${active.length}개</span></div><div class="stack">${active.map(itemCard).join("")}</div></div>`:""}
-  ${done.length?`<div class="sec"><div class="sechead"><h2>달성한 버킷</h2><span>${done.length}개</span></div><div class="stack">${done.map(doneCard).join("")}</div></div>`:""}`;
+  ${done.length?`<div class="sec"><div class="sechead"><h2>달성한 버킷</h2><span>${done.length}개</span></div><div class="stack">${done.map(doneCard).join("")}</div></div>`:""}
+  ${!st.cloud&&st.items.some(i=>prog(i).d)&&Date.now()-lastBackup()>7*864e5?`<button class="notice" data-act="goBackup" style="text-align:left;width:100%">${ic("info")}<span><b>기록은 이 기기에만 있어요.</b> ${lastBackup()?"마지막 백업이 일주일 넘었어요.":"폰을 바꾸기 전에 백업해 두세요."} <u>백업하러 가기</u></span></button>`:""}`;
 }
 function stepRow(it,s,i,g){
   if(s.done)return`<li><button class="srow done" data-act="record" data-id="${it.id}" data-i="${i}">
@@ -891,7 +984,9 @@ function itemCard(it){
       <ol class="steps">${it.steps.map((s,i)=>stepRow(it,s,i,g)).join("")}</ol>
       <form class="addstep" data-form="addstep" data-id="${it.id}"><input class="input" id="as-${it.id}" data-keep maxlength="60" placeholder="단계 추가하기" aria-label="단계 추가"><button class="btn md">추가</button></form>
       <div class="itemtools">
+        <button class="btn sm" data-act="edit" data-id="${it.id}">${ic("edit","s")}편집</button>
         <button class="btn sm" data-act="plan" data-id="${it.id}">${ic("calendar","s")}${it.due?"계획 수정":"계획 세우기"}</button>
+        ${calEvents(it).length?`<button class="btn sm" data-act="cal" data-id="${it.id}">${ic("phone","s")}캘린더에 추가</button>`:""}
         ${g.d?`<button class="btn sm" data-act="album" data-id="${it.id}">${ic("image","s")}기록 보기</button>`:""}
       </div>
       ${st.confirmDel===it.id?`<div class="confirm"><span>이 버킷과 인증 기록을 지울까요?</span><button class="btn sm danger" data-act="delYes" data-id="${it.id}" style="background:var(--surface)">삭제</button><button class="btn sm" data-act="delNo" style="background:var(--surface)">취소</button></div>`:
@@ -1025,6 +1120,8 @@ function sheetView(){
     </form>`);
   }
   if(!it)return"";
+  if(st.sheet==="edit")return editSheet(it);
+  if(st.sheet==="cal")return calSheet(it);
   if(st.sheet==="proof"){
     const s=it.steps[st.arg.i];if(!s)return"";const d=st.pd||{};
     return wrap("단계 인증",`
@@ -1100,6 +1197,142 @@ function celebrateView(){
         <button class="btn text" data-act="closeCele" style="align-self:center">닫기</button></div>
     </div></div>`;
 }
+
+/* ---------------- 편집 ---------------- */
+function editSheet(it){
+  const e=st.edit;if(!e)return"";
+  return wrap("버킷 편집",`
+  <form data-form="edit" class="stack" style="gap:18px">
+    <div class="field"><label for="eTitle">이름</label><input class="input" id="eTitle" data-keep maxlength="60" required value="${esc(it.title)}"></div>
+    <div class="field"><label for="eCat">분야</label><select class="input" id="eCat" data-keep>${Object.entries(CAT).map(([k,l])=>`<option value="${k}" ${it.cat===k?"selected":""}>${l}</option>`).join("")}</select></div>
+    <div class="two"><div class="field"><label for="eCost">예상 비용 (만원)</label><input class="input tnum" id="eCost" data-keep type="number" min="0" value="${+it.cost||0}" inputmode="numeric"></div>
+      <div class="field"><label for="eHours">예상 시간</label><input class="input tnum" id="eHours" data-keep type="number" min="0" value="${+it.hours||0}" inputmode="numeric"></div></div>
+    <div class="field"><span class="lb">단계 <span class="faint small">순서를 바꾸거나 지울 수 있어요</span></span>
+      <div class="editlist">${e.steps.map((s,i)=>`<div class="erow ${s.done?"done":""}">
+        <span class="pn">${i+1}</span>
+        <input class="input" id="es-${i}" value="${esc(s.t)}" maxlength="60" aria-label="${i+1}단계 이름" placeholder="단계 이름">
+        <div class="eacts">
+          <button type="button" class="iconbtn sm" data-act="emove" data-i="${i}" data-d="-1" aria-label="위로" ${i===0?"disabled":""}>${ic("up","s")}</button>
+          <button type="button" class="iconbtn sm" data-act="emove" data-i="${i}" data-d="1" aria-label="아래로" ${i===e.steps.length-1?"disabled":""}>${ic("down","s")}</button>
+          ${s.done?`<span class="edone">완료</span>`:`<button type="button" class="iconbtn sm danger" data-act="edel" data-i="${i}" aria-label="삭제">${ic("trash","s")}</button>`}
+        </div></div>`).join("")}</div>
+      <button type="button" class="btn md" data-act="eadd">${ic("plus","s")}단계 추가</button>
+      <span class="hint">완료한 단계는 인증 기록이 있어서 여기서 지울 수 없어요. 단계를 눌러 완료 취소한 뒤 지워주세요.</span></div>
+    <button class="btn primary block">저장</button>
+  </form>`);
+}
+function syncEdit(){if(!st.edit)return;st.edit.steps.forEach((s,i)=>{const el=document.getElementById("es-"+i);if(el)s.t=el.value})}
+function saveEdit(){
+  const it=st.items.find(x=>x.id===st.arg.id);if(!it)return;syncEdit();
+  const g=id=>document.getElementById(id).value,title=g("eTitle").trim();
+  if(!title){toast("이름을 적어주세요");return}
+  const steps=st.edit.steps.map(s=>({...s,t:s.t.trim()})).filter(s=>s.done||s.t);
+  steps.forEach(s=>{if(!s.t)s.t="이름 없는 단계"});
+  if(!steps.length){toast("단계가 하나는 있어야 해요");return}
+  const before=prog(it).status;
+  const n={...it,title,cat:CAT[g("eCat")]?g("eCat"):it.cat,cost:Math.max(0,+g("eCost")||0),hours:Math.max(0,+g("eHours")||0),steps};
+  const after=prog(n).status;
+  if(after==="done"&&before!=="done"){n.doneAt=Math.max(Date.now(),...steps.map(s=>s.at||0));st.celebrate=n.id;st.open.delete(n.id)}
+  if(after!=="done")n.doneAt=null;
+  saveItem(n);["eTitle","eCat","eCost","eHours"].forEach(k=>delete st.keep[k]);st.edit=null;st.sheet=null;render();
+  if(st.celebrate)requestAnimationFrame(confetti);else toast("수정했어요");
+}
+
+/* ---------------- 캘린더 ---------------- */
+const ymdC=s=>s.replace(/-/g,"");
+const nextDay=s=>dstr(new Date(s+"T12:00:00").getTime()+864e5);
+function calEvents(it){
+  const ev=it.steps.filter(s=>!s.done&&s.due).map(s=>({date:s.due,title:`[버킷] ${it.title} · ${s.t}`,desc:`버킷스탬프 "${it.title}"의 단계예요.`}));
+  if(it.due)ev.push({date:it.due,title:`[버킷 목표일] ${it.title}`,desc:`"${it.title}"을 해내기로 한 날이에요.`});
+  return ev;
+}
+const gcalURL=e=>"https://calendar.google.com/calendar/render?action=TEMPLATE&text="+encodeURIComponent(e.title)+"&dates="+ymdC(e.date)+"/"+ymdC(nextDay(e.date))+"&details="+encodeURIComponent(e.desc);
+function icsText(it){
+  const x=s=>String(s).replace(/\\/g,"\\\\").replace(/[,;]/g,m=>"\\"+m).replace(/\n/g,"\\n");
+  const stamp=new Date().toISOString().replace(/[-:]/g,"").replace(/\.\d+/,"");
+  const L=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//bucketstamp//KO","CALSCALE:GREGORIAN","METHOD:PUBLISH"];
+  calEvents(it).forEach((e,k)=>{L.push("BEGIN:VEVENT",`UID:${it.id}-${k}-${ymdC(e.date)}@bucketstamp`,`DTSTAMP:${stamp}`,`DTSTART;VALUE=DATE:${ymdC(e.date)}`,`DTEND;VALUE=DATE:${ymdC(nextDay(e.date))}`,`SUMMARY:${x(e.title)}`,`DESCRIPTION:${x(e.desc)}`,
+    "BEGIN:VALARM","ACTION:DISPLAY",`DESCRIPTION:${x(e.title)}`,"TRIGGER:-PT15H","END:VALARM","END:VEVENT")});
+  L.push("END:VCALENDAR");return L.join("\r\n");
+}
+function calSheet(it){
+  const ev=calEvents(it);
+  if(!ev.length)return wrap("캘린더에 추가",`<div class="empty" style="padding:24px 12px"><p>아직 날짜가 정해진 단계가 없어요.</p><button class="btn primary md" data-act="plan" data-id="${it.id}">계획 세우기</button></div>`);
+  return wrap("캘린더에 추가",`
+    <p class="muted">${esc(it.title)}의 남은 단계 ${ev.length}개를 캘린더에 넣어요. 전날 저녁 9시에 알림이 울려요.</p>
+    ${window.claude?"":`<button class="btn primary block" data-act="ics" data-id="${it.id}">${ic("phone","s")}폰 캘린더에 한 번에 추가</button>`}
+    <div class="field"><span class="lb">구글 캘린더에 하나씩 추가</span>
+      <div class="callist">${ev.map(e=>`<a class="calrow" href="${gcalURL(e)}" target="_blank" rel="noopener"><span class="cd tnum">${sD(e.date)}</span><span class="ct">${esc(e.title.replace(/^\[버킷( 목표일)?\] /,""))}</span>${ic("right","s")}</a>`).join("")}</div></div>`);
+}
+
+/* ---------------- 백업 ---------------- */
+const BK="bucketstamp.backupAt";
+const lastBackup=()=>{try{return+localStorage.getItem(BK)||0}catch(e){return 0}};
+const blobToDataURL=b=>new Promise(r=>{const f=new FileReader();f.onload=()=>r(f.result);f.onerror=()=>r(null);f.readAsDataURL(b)});
+async function dataURLToBlob(u){try{return await (await fetch(u)).blob()}catch(e){const[h,d]=u.split(",");const bin=atob(d);const a=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)a[i]=bin.charCodeAt(i);return new Blob([a],{type:(h.match(/:(.*?);/)||[])[1]||"image/jpeg"})}}
+async function saveFile(name,data){
+  if(window.claude&&typeof window.claude.use==="function"){
+    const dl=await window.claude.use("downloads");if(!dl){toast("이 화면에서는 파일을 저장할 수 없어요");return false}
+    try{await dl.save({filename:name,data});return true}catch(e){if(e&&e.code!=="declined")toast("파일을 저장하지 못했어요");return false}
+  }
+  const blob=data instanceof Blob?data:new Blob([data]);const u=URL.createObjectURL(blob);const a=document.createElement("a");a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000);return true;
+}
+async function exportBackup(){
+  st.busy="export";render();
+  const photos={};
+  for(const it of st.items)for(const s of it.steps)if(s.photo&&!photos[s.photo]){const b=await PDB.get(s.photo);if(b)photos[s.photo]=await blobToDataURL(b)}
+  const data={app:"bucketstamp",v:1,exportedAt:new Date().toISOString(),profile:st.profile,items:st.items,ai:st.ai,photos};
+  const ok=await saveFile(`버킷스탬프-백업-${ymdC(todayStr())}.json`,JSON.stringify(data));
+  st.busy=null;if(ok){try{localStorage.setItem(BK,String(Date.now()))}catch(e){}toast(`백업 파일을 저장했어요 · 사진 ${Object.keys(photos).length}장 포함`)}
+  render();
+}
+async function readBackup(file){
+  try{
+    const d=JSON.parse(await file.text());
+    if(!d||d.app!=="bucketstamp"||!Array.isArray(d.items))throw 0;
+    const items=d.items.filter(i=>i&&i.id&&Array.isArray(i.steps));
+    st.importData={profile:normProfile(d.profile),items,ai:Array.isArray(d.ai)?d.ai:[],photos:d.photos&&typeof d.photos==="object"?d.photos:{},at:d.exportedAt};
+  }catch(e){st.importData=null;toast("버킷스탬프 백업 파일이 아니에요. 다른 파일을 골라주세요")}
+  render();
+}
+async function applyBackup(){
+  const d=st.importData;if(!d)return;st.busy="import";render();
+  for(const[id,u]of Object.entries(d.photos)){if(typeof u==="string"&&u.startsWith("data:image/")){const b=await dataURLToBlob(u);if(b)await PDB.put(id,b)}}
+  const old=st.items.map(i=>i.id),keep=new Set(d.items.map(i=>i.id));
+  old.filter(id=>!keep.has(id)).forEach(id=>{st.items=st.items.filter(x=>x.id!==id);docDel(mine(id));if(st.cloud)docDel(`pub/${st.uid}_${id}`)});
+  st.profile=d.profile;st.draft=clone(d.profile);st.ai=d.ai;saveProfile();
+  d.items.forEach(it=>saveItem({...it,kind:"item"}));
+  st.importData=null;st.busy=null;saveLocal();render();toast(`백업을 불러왔어요 · 버킷 ${d.items.length}개`);
+}
+function dataSection(){
+  const lb=lastBackup(),d=st.importData;
+  return`<div class="sec"><div class="sechead"><h2>기록 관리</h2></div>
+    <div class="card tight">
+      <p class="muted small">${st.cloud?"기록은 Claude 계정에 저장되고, 인증 사진은 이 기기에만 있어요.":"기록과 사진은 이 기기 브라우저에만 저장돼요. 폰을 바꾸거나 인터넷 기록을 지우기 전에 백업해 주세요."}</p>
+      <p class="small" style="font-weight:600">${lb?`마지막 백업 ${ymd(lb)}`:"아직 백업한 적이 없어요"}</p>
+      <div class="two">
+        <button class="btn md" data-act="export" ${st.busy?"disabled":""}>${st.busy==="export"?'<span class="spin"></span>':ic("download","s")}백업 저장</button>
+        <label class="btn md" for="bkfile">${ic("upload","s")}백업 불러오기</label>
+      </div><input type="file" id="bkfile" accept=".json,application/json" class="sr">
+      ${d?`<div class="confirm" style="margin:0;background:var(--accent-soft);color:var(--accent-ink)"><span>${d.at?ymd(Date.parse(d.at))+" 백업 · ":""}버킷 ${d.items.length}개, 사진 ${Object.keys(d.photos).length}장으로 지금 기록을 바꿀까요?</span>
+        <button class="btn sm primary" data-act="importYes" ${st.busy?"disabled":""}>${st.busy==="import"?'<span class="spin"></span>':""}바꾸기</button><button class="btn sm" data-act="importNo" style="background:var(--surface)">취소</button></div>`:""}
+    </div></div>
+  ${installSection()}`;
+}
+
+/* ---------------- 홈 화면에 추가 ---------------- */
+let deferredInstall=null;
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredInstall=e;if(st.tab==="profile")soon()});
+const isStandaloneApp=()=>matchMedia("(display-mode: standalone)").matches||navigator.standalone===true;
+function installSection(){
+  if(window.claude||isStandaloneApp()||location.protocol!=="https:")return"";
+  const ios=/iphone|ipad|ipod/i.test(navigator.userAgent);
+  return`<div class="sec"><div class="sechead"><h2>앱처럼 쓰기</h2></div>
+    <div class="card tight"><div class="row" style="flex-wrap:nowrap;gap:14px"><span class="caticon">${ic("phone")}</span>
+      <p class="muted small" style="flex:1">${deferredInstall?"홈 화면에 추가하면 앱처럼 바로 열리고 인터넷이 없어도 열려요.":ios?"Safari 아래쪽 공유 버튼을 누르고 <b>홈 화면에 추가</b>를 고르면 앱처럼 쓸 수 있어요.":"브라우저 메뉴에서 <b>홈 화면에 추가</b>나 <b>앱 설치</b>를 고르면 앱처럼 쓸 수 있어요."}</p></div>
+      ${deferredInstall?`<button class="btn primary md" data-act="install">홈 화면에 추가</button>`:""}</div></div>`;
+}
+if(!window.claude&&"serviceWorker"in navigator&&(location.protocol==="https:"||location.hostname==="localhost")){window.addEventListener("load",()=>{navigator.serviceWorker.register("sw.js").catch(()=>{})})}
 
 /* ---------------- 달성 카드 이미지 ---------------- */
 const canShareFiles=()=>{try{return!window.claude&&!!navigator.canShare&&navigator.canShare({files:[new File([""],"a.png",{type:"image/png"})]})}catch(e){return false}};
@@ -1259,6 +1492,7 @@ function undoStep(id,i){
 }
 function openSheet(type,arg){st.sheet=type;st.arg=arg||null;st.confirmUndo=false;
   if(type==="proof"){st.pd={photo:null};["pNote","pCost","pHours","pDate"].forEach(k=>delete st.keep[k])}
+  if(type==="edit"){const it=st.items.find(x=>x.id===arg.id);st.edit=it?{steps:clone(it.steps)}:null;["eTitle","eCat","eCost","eHours"].forEach(k=>delete st.keep[k])}
   if(type==="plan")Object.keys(st.keep).forEach(k=>{if(k==="plDue"||k.startsWith("pl-"))delete st.keep[k]});
   render();
 }
@@ -1278,6 +1512,17 @@ document.addEventListener("click",e=>{
   if(a==="undoNo"){st.confirmUndo=false;render();return}
   if(a==="undoYes"){undoStep(st.arg.id,st.arg.i);st.sheet=null;st.confirmUndo=false;render();toast("완료를 취소했어요");return}
   if(a==="plan"){openSheet("plan",{id:b.dataset.id});return}
+  if(a==="edit"){openSheet("edit",{id:b.dataset.id});return}
+  if(a==="emove"){syncEdit();const i=+b.dataset.i,j=i+(+b.dataset.d),S=st.edit.steps;if(j<0||j>=S.length)return;[S[i],S[j]]=[S[j],S[i]];render();const f=document.getElementById("es-"+j);if(f)f.focus({preventScroll:true});return}
+  if(a==="edel"){syncEdit();st.edit.steps.splice(+b.dataset.i,1);render();return}
+  if(a==="eadd"){syncEdit();st.edit.steps.push({t:"",done:false,due:""});render();const f=document.getElementById("es-"+(st.edit.steps.length-1));if(f)f.focus();return}
+  if(a==="cal"){openSheet("cal",{id:b.dataset.id});return}
+  if(a==="ics"){const it=st.items.find(x=>x.id===b.dataset.id);if(it){saveFile(`버킷-${it.title.replace(/[\\/:*?"<>|]/g,"").slice(0,30)}.ics`,new Blob([icsText(it)],{type:"text/calendar"}));toast("캘린더 파일을 열어 추가해 주세요")}return}
+  if(a==="export")return exportBackup();
+  if(a==="importYes")return applyBackup();
+  if(a==="importNo"){st.importData=null;render();return}
+  if(a==="goBackup"){setTab("profile");setTimeout(()=>{const el=document.getElementById("bkfile");if(el)el.closest(".sec").scrollIntoView({block:"start",behavior:"smooth"})},80);return}
+  if(a==="install"){if(deferredInstall){deferredInstall.prompt();deferredInstall.userChoice.finally(()=>{deferredInstall=null;render()})}return}
   if(a==="album"){openSheet("album",{id:b.dataset.id});return}
   if(a==="card")return openCard(b.dataset.id);
   if(a==="saveCard")return saveCard();
@@ -1296,6 +1541,7 @@ document.addEventListener("click",e=>{
   if(a==="mbti"){const k=b.dataset.k;d.mbti[k]=d.mbti[k]===b.dataset.v?"":b.dataset.v;render();return}
   if(a==="q"){d.q[b.dataset.k]=+b.dataset.v;render();clearTimeout(wizGo.t);wizGo.t=setTimeout(()=>{if(WZ[st.wiz]&&WZ[st.wiz].startsWith("q"))wizGo(st.wiz+1)},260);return}
   if(a==="cat"){const k=b.dataset.k;d.cats=d.cats.includes(k)?d.cats.filter(x=>x!==k):[...d.cats,k];render();return}
+  if(a==="region"){d.region=d.region===b.dataset.k?"":b.dataset.k;render();return}
   if(a==="preset"){d.budget=+b.dataset.v;render();return}
   if(a==="months"){d.months=+b.dataset.v;render();return}
   if(a==="saveProfile"){st.profile={...clone(d),done:true};saveProfile();if(st.wizDirty)st.ai=[];saveLocal();setTab("recs");return}
@@ -1329,6 +1575,7 @@ document.addEventListener("click",e=>{
 });
 document.addEventListener("change",async e=>{
   const t=e.target;
+  if(t.id==="bkfile"&&t.files&&t.files[0]){readBackup(t.files[0]);t.value="";return}
   if(t.id==="pfile"&&t.files&&t.files[0]&&st.pd){
     const f=t.files[0],old=st.pd.photo;st.pd.loading=true;st.pd.err=false;render();
     try{const blob=await compress(f);const id="p-"+rnd();await PDB.put(id,blob);if(old)PDB.del(old);if(st.pd){st.pd.photo=id;st.pd.loading=false}}
@@ -1352,6 +1599,7 @@ document.addEventListener("submit",e=>{
     if(!st.pd||(!st.pd.photo&&note.length<2)){if(st.pd)st.pd.err=true;render();const h=document.getElementById("pHint");if(h)h.scrollIntoView({block:"center"});return}
     st.pd.saved=true;completeStep(st.arg.id,st.arg.i,{note,photo:st.pd.photo,cost:g("pCost"),hours:g("pHours"),date:g("pDate")});
     ["pNote","pCost","pHours","pDate"].forEach(k=>delete st.keep[k]);st.sheet=null;st.pd=null;render();if(st.celebrate)requestAnimationFrame(confetti);return}
+  if(kind==="edit")return saveEdit();
   if(kind==="plan"){
     const it=st.items.find(x=>x.id===st.arg.id);if(!it)return;
     const due=g("plDue")||"";
@@ -1380,17 +1628,17 @@ async function runAI(){
   const p=st.profile,rb=Math.max(0,p.budget-plannedCost()),rh=Math.max(0,availHours(p)-plannedHours());
   const qtxt=QS.map(x=>`${x.t.replace("\n"," ")} ${p.q[x.k]==null?"무응답":x.o[p.q[x.k]+1][0]}`).join(" / ");
   const have=st.items.map(i=>i.title).join(", ")||"없음";
-  const cat=CATALOG.map(c=>`${c.id}|${c.t}|${CAT[c.cat]}|${c.cost}만원|${c.h}시간`).join("\n");
+  const cat=CATALOG.map(c=>`${c.id}|${c.t}|${CAT[c.cat]}|${c.cost}만원|${c.h}시간${c.mo?"|제철 "+moLabel(c.mo):""}${c.loc?"|"+c.loc.map(x=>REGION[x]).join("·"):""}`).join("\n");
   const prompt=`버킷리스트 추천을 해줘. 한국어로 답해.
 사람: MBTI ${mbtiStr(p.mbti)} (?는 모름), 성향 요약 "${persona(p)}", 취향: ${qtxt}, 끌리는 분야: ${p.cats.map(c=>CAT[c]).join(", ")||"정하지 않음"}.
-남은 예산 ${rb}만원, 기간 ${p.months}개월, 남은 시간 약 ${rh}시간 (주 ${p.weekly}시간).
+남은 예산 ${rb}만원, 기간 ${p.months}개월(지금은 ${new Date().getMonth()+1}월), 남은 시간 약 ${rh}시간 (주 ${p.weekly}시간). 사는 곳: ${p.region?REGION[p.region]:"모름"}.
 이미 담은 버킷: ${have}
 
 후보 목록 (id|이름|분야|비용|시간):
 ${cat}
 
 규칙:
-- 후보 목록에서 이 사람에게 가장 잘 맞고 남은 예산·시간 안에서 각각 해낼 수 있는 것 5개를 골라. 이미 담은 건 빼.
+- 후보 목록에서 이 사람에게 가장 잘 맞고 남은 예산·시간 안에서 각각 해낼 수 있는 것 5개를 골라. 이미 담은 건 빼. 기간 안에 제철이 오지 않는 건 고르지 마.
 - 목록에 없는 새 아이디어도 3개 제안해. 예산·시간 안에서 현실적이고 구체적으로.
 - why는 이 사람의 MBTI·취향과 연결한 한 문장 (45자 안팎, "~해서 잘 맞아요" 같은 존댓말).
 - cat은 travel, sport, learn, create, people, culture 중 하나.
