@@ -1100,9 +1100,8 @@ function viewProfile(){
     const ax=(k,a,al,b,bl)=>`<div class="axis" role="group" aria-label="${al} 또는 ${bl}">
       <button data-act="mbti" data-k="${k}" data-v="${a}" aria-pressed="${m[k]===a}"><b>${a}</b><span>${al}</span></button>
       <button data-act="mbti" data-k="${k}" data-v="${b}" aria-pressed="${m[k]===b}"><b>${b}</b><span>${bl}</span></button></div>`;
-    body=`<div><h1 class="wq">MBTI를 알려주세요</h1><p class="wsub">아는 것만 골라도 돼요. 같은 걸 한 번 더 누르면 해제돼요.</p></div>
+    body=`<div><h1 class="wq">MBTI를 알려주세요</h1><p class="wsub">아는 것만 골라도 돼요. 한 번 더 누르면 해제돼요.</p></div>
       <div class="mbtihead">
-        <input class="mbtiinput" id="mbtiText" maxlength="4" placeholder="4글자 입력" autocomplete="off" autocapitalize="characters" aria-label="MBTI 직접 입력">
         <div class="typeview" aria-label="선택한 유형">${["EI","SN","TF","JP"].map(k=>`<span class="${m[k]?"on":""}">${m[k]||"?"}</span>`).join("")}</div>
       </div>
       <div class="mbtigrid">${ax("EI","E","외향","I","내향")}${ax("SN","S","감각","N","직관")}${ax("TF","T","사고","F","감정")}${ax("JP","J","계획","P","즉흥")}</div>`;
@@ -2388,8 +2387,6 @@ document.addEventListener("input",e=>{
   if(t.type==="range"){const p=(t.value-t.min)/(t.max-t.min)*100;t.style.setProperty("--p",p+"%")}
   if(t.id==="budget"){d.budget=+t.value;document.getElementById("budgetOut").innerHTML=`${d.budget.toLocaleString("ko-KR")}<small>만원</small>`;document.querySelectorAll('[data-act="preset"]').forEach(c=>c.setAttribute("aria-pressed",+c.dataset.v===d.budget))}
   if(t.id==="weekly"){d.weekly=+t.value;document.getElementById("weeklyOut").innerHTML=`${d.weekly}<small>시간</small>`;document.getElementById("calcOut").innerHTML=`${d.months}개월 동안 <b class="tnum">약 ${availHours(d).toLocaleString("ko-KR")}시간</b>을 쓸 수 있어요`}
-  if(t.id==="mbtiText"){const v=t.value.toUpperCase().replace(/[^EISNTFJP]/g,"");t.value=v;
-    if(/^[EI][SN][TF][JP]$/.test(v)){d.mbti={EI:v[0],SN:v[1],TF:v[2],JP:v[3]};t.value="";st.keep.mbtiText="";render();toast(`${v}로 설정했어요`)}}
 });
 document.addEventListener("pointerdown",e=>{
   if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;
